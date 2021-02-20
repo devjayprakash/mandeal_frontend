@@ -3,7 +3,7 @@
 .home {
     height: 100vh;
     width: 100wh;
-    background: url(/images/icons/homebg.png) ;
+    //background: url(/images/icons/homebg.png) ;
 
     &_nav {
         padding: 3rem 4rem;
@@ -71,7 +71,7 @@
 
 .xyz {
      height: 100vh;
-    background-image: url(../images/graps.jpg) ;
+    //  background-image: url(/images/graps.jpg) ;
 
     
 
@@ -189,7 +189,7 @@
 .reg {
     height: 100vh;
     
-     background: url(../images/icons/Registerbg.png);
+    // background: url(/images/icons/Registerbg.png);
     background-blend-mode: darken;
     background-repeat: no-repeat;
     background-position: bottom;

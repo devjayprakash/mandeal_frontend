@@ -9,6 +9,10 @@
 .logo {
      font-weight: 700;
     color: $color-black;
+    //transition: all .5s ;
+    animation: moveInLeft .5s  .2s  forwards fill-mode;
+
+    
 }
 
 [class *= 'btn']{
