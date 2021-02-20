@@ -8,6 +8,10 @@ import BuyerHomePage from "./pages/buyerHomePage";
 import SellerHomePage from "./pages/sellerHomePage";
 import "./style/main.scss";
 
+let authenticate = (component) => {
+  let token = document.cookie.jwt;
+};
+
 let App = () => {
   return (
     <div>

@@ -1,9 +1,10 @@
+import axios from "axios";
 import React, { useState } from "react";
 
 const SignUp = () => {
   let [authData, setAuthData] = useState({
     name: "",
-    email: "",
+    phone: "",
     password: "",
     type: "",
   });
@@ -13,14 +14,24 @@ const SignUp = () => {
     msg: "",
   });
 
-  let signUpUser = () => {
+  let signUpUser = async () => {
     if (
       authData.name !== "" &&
-      authData.email !== "" &&
+      authData.phone !== "" &&
       authData.password !== "" &&
       authData.type !== ""
     ) {
+      let res = await axios.post("/api/v1/auth/signup", authData);
+      if (res.res) {
+        console.log("sucess");
+      } else {
+        console.log("failed");
+      }
     } else {
+      setErr({
+        show: true,
+        msg: "Please full all the details and try again",
+      });
     }
   };
 
@@ -60,15 +71,15 @@ const SignUp = () => {
           />
           <br />
           <input
-            value={authData.email}
+            value={authData.phone}
             onChange={(e) => {
               setAuthData({
                 ...authData,
-                email: e.target.value,
+                phone: e.target.value,
               });
             }}
-            type="email"
-            placeholder="Email Id"
+            type="text"
+            placeholder="Phone number"
             className="reg_form-email input"
           />
           <br />
@@ -132,7 +143,9 @@ const SignUp = () => {
             </p>
           </div>
 
-          <div className="reg_form-btn btn-red">Register</div>
+          <div onClick={() => signUpUser()} className="reg_form-btn btn-red">
+            Register
+          </div>
           <p
             style={{
               fontWeight: "600",
