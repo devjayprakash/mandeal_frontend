@@ -6,9 +6,6 @@ const BuyerHomePage = () => {
     <div>
       <div class="sell">
         <div class="sell_nav">
-          <div class="sell_nav-logo logo">
-            Man<span class="span">deal</span>
-          </div>
           <div class="search">
             <div class="search-container">
               <input
