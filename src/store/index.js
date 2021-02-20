@@ -1,37 +1,14 @@
-const { default: axios } = require("axios");
-let redux = require("redux");
-const { AUTH, USER_DATA } = require("./type");
-let { extractCookies } = require("../utility");
+import { AUTH, USER_DATA } from "./type";
+import { createStore } from "redux";
 
-let defaultState = async () => {
-  let token = extractCookies(document.cookie).jwt;
-
-  if (token === undefined || token === null || token === "") {
-    try {
-      let res = await axios.post("/api/v1/auth/verifyToken", { token: token });
-
-      if (res.res) {
-        return {
-          auth: true,
-          userdetail: res.data.userdetail,
-        };
-      }
-    } catch (err) {
-      return {
-        auth: false,
-        userdetail: null,
-      };
-      console.log(err);
-    }
-  } else {
-    return {
-      auth: false,
-      userdetail: null,
-    };
-  }
+let defaultState = () => {
+  return {
+    auth: false,
+    userdetail: null,
+  };
 };
 
-function reducerFunction(state = defaultState, actions) {
+function reducerFunction(state = defaultState(), actions) {
   switch (actions.type) {
     case AUTH: {
       return {
@@ -51,6 +28,6 @@ function reducerFunction(state = defaultState, actions) {
   }
 }
 
-let store = redux.createStore(reducerFunction);
+let store = createStore(reducerFunction);
 
-module.exports = store;
+export default store;

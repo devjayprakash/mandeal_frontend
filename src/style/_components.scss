@@ -1,89 +1,101 @@
-//navbar
+//navbar 
 .nav {
-  height: 10vh;
-  width: 100%;
-  display: flex;
-  align-items: center;
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .logo {
-  font-weight: 700;
-  color: $color-black;
+     font-weight: 700;
+    color: $color-black;
 }
 
-[class*="btn"] {
-  height: 2rem;
-  width: 7rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50rem;
-  color: $color-white;
-  font-size: 0.8rem;
-  font-weight: 500;
-  cursor: pointer;
+[class *= 'btn']{
+     height: 2rem;
+    width: 7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50rem;
+    color: $color-white;
+    font-size: .8rem;
+    font-weight: 500;
+    cursor: pointer;
+
 }
 
 .btn-red {
-  background-color: $color-pink;
+    background-color: $color-pink;   
 }
 
 .btn-blue {
-  background-color: $color-blue;
-  height: 2.5rem;
-  width: 15rem;
+    background-color: $color-blue;
+    height: 2.5rem;
+                width: 15rem;
+}
+
+.btn-green {
+    background-color:$color-green ;
+    height: 2.5rem;
+    width: 15rem;
 }
 
 .input {
-  outline: none;
-  border: none;
-  padding: 1rem;
-  border-radius: 5rem;
-  &::placeholder {
-    padding: 9px;
-  }
-  &:active,
-  &:focus {
     outline: none;
-    outline-style: none;
-  }
+    border: none;
+    border-radius: 5rem;
+    &::placeholder{
+        padding: 9px ;
+    }
+    &:active, &:focus {
+        outline: none;
+        outline-style: none;
+    }
 }
 hr {
-  opacity: 0.5;
-  color: $color-black;
+    opacity: .5;
+    color: $color-black;
 }
 .footer {
-  margin-top: 5rem;
-  width: 100wh;
-  height: 200px;
-  background-color: $color-blue;
+    margin-top: 5rem;
+    width: 100wh;
+    height: 200px;
+    background-color: $color-blue;
+    
 }
 
 .search {
-  background-color: $color-white;
-  flex: 1;
-  margin: auto 5rem;
-  padding: 1rem;
-  border-radius: 123rem;
-
-  &-container {
-    display: flex;
+    background-color: $color-white;
+    flex: 1;
+    margin: auto 5rem;
+    padding: 1rem;
     border-radius: 123rem;
-    align-items: center;
-    justify-content: space-around;
+     
+    &-container {
+        display: flex;
+        border-radius: 123rem;
+        align-items: center;
+        justify-content: space-around;
+        
 
-    &-bar {
-      border: none;
-      &:active,
-      &:focus {
-        outline-style: none;
-        outline: none;
-      }
-    }
+        &-bar{
+            border: none;
+            &:active, &:focus{
+                outline-style: none;
+                outline: none;
+            }
 
-    &-icon {
-      width: 1rem;
-      cursor: pointer;
+             
+
+        }
+
+        &-icon {
+            width: 1rem;
+            cursor: pointer;
+
+        }
     }
-  }
 }
+
+//Card
