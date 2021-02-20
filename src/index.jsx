@@ -6,6 +6,7 @@ import Login from "./pages/login";
 import SignUp from "./pages/signup";
 import BuyerHomePage from "./pages/buyerHomePage";
 import SellerHomePage from "./pages/sellerHomePage";
+import SellerCard from "./components/sellerCard";
 import "./style/main.scss";
 
 let App = () => {
