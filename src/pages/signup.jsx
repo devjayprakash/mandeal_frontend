@@ -1,9 +1,15 @@
+import axios from "axios";
 import React, { useState } from "react";
+import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { setAuth, setUserData } from "../store/actions";
 
-const SignUp = () => {
+const SignUp = ({ setAuthStore, setUserDataStore }) => {
+  let history = useHistory();
+
   let [authData, setAuthData] = useState({
     name: "",
-    email: "",
+    phone: "",
     password: "",
     type: "",
   });
@@ -13,14 +19,31 @@ const SignUp = () => {
     msg: "",
   });
 
-  let signUpUser = () => {
+  let signUpUser = async () => {
     if (
       authData.name !== "" &&
-      authData.email !== "" &&
+      authData.phone !== "" &&
       authData.password !== "" &&
       authData.type !== ""
     ) {
+      let res = await axios.post("/api/v1/auth/signup", authData);
+      console.log(res);
+      if (res.data.res) {
+        setUserDataStore(res.data.userdata);
+        setAuthStore(true);
+
+        history.push("/seller");
+      } else {
+        setErr({
+          show: true,
+          msg: "Login failed. Please give valid detail and try again.",
+        });
+      }
     } else {
+      setErr({
+        show: true,
+        msg: "Please full all the details and try again",
+      });
     }
   };
 
@@ -60,15 +83,15 @@ const SignUp = () => {
           />
           <br />
           <input
-            value={authData.email}
+            value={authData.phone}
             onChange={(e) => {
               setAuthData({
                 ...authData,
-                email: e.target.value,
+                phone: e.target.value,
               });
             }}
-            type="email"
-            placeholder="Email Id"
+            type="text"
+            placeholder="Phone number"
             className="reg_form-email input"
           />
           <br />
@@ -101,7 +124,7 @@ const SignUp = () => {
               type="radio"
               placeholder="Buyer"
               className="reg_form-role--buyer"
-            />{" "}
+            />
             <p
               style={{
                 color: "#D82562",
@@ -132,7 +155,9 @@ const SignUp = () => {
             </p>
           </div>
 
-          <div className="reg_form-btn btn-red">Register</div>
+          <div onClick={() => signUpUser()} className="reg_form-btn btn-red">
+            Register
+          </div>
           <p
             style={{
               fontWeight: "600",
@@ -147,4 +172,22 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+let mapProps = (state) => {
+  return {
+    auth: state.auth,
+    userdata: state.userdata,
+  };
+};
+
+let mapActions = (dispatch) => {
+  return {
+    setAuthStore: (payload) => {
+      return dispatch(setAuth(payload));
+    },
+    setUserDataStore: (payload) => {
+      return dispatch(setAuth(payload));
+    },
+  };
+};
+
+export default connect(mapProps, mapActions)(SignUp);

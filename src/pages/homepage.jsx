@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Homepage = () => {
   return (
@@ -8,7 +9,7 @@ const Homepage = () => {
           Man<span className="span">deal</span>
         </div>
         <div className="home_nav-login">
-          <a href="#">Login</a>
+          <Link to={"/login"}>Login</Link>
         </div>
       </div>
 
@@ -19,7 +20,9 @@ const Homepage = () => {
         <div className="home_main-tagline">
           The mordern form of perfect MANDI
         </div>
-        <div className="home_main-btn btn-red">Register</div>
+        <Link to={"/signup"}>
+          <div className="home_main-btn btn-red">Register</div>
+        </Link>
       </div>
     </div>
   );

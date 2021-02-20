@@ -8,10 +8,12 @@ import BuyerHomePage from "./pages/buyerHomePage";
 import SellerHomePage from "./pages/sellerHomePage";
 import SellerCard from "./components/sellerCard";
 import "./style/main.scss";
+import { Provider } from "react-redux";
+import store from "./store";
 
 let App = () => {
   return (
-    <div>
+    <Provider store={store}>
       <BrowserRouter>
         <Switch>
           <Route exact component={Homepage} path={"/"} />
@@ -21,7 +23,7 @@ let App = () => {
           <Route component={SellerHomePage} path={"/seller"} />
         </Switch>
       </BrowserRouter>
-    </div>
+    </Provider>
   );
 };
 
