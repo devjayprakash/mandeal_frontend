@@ -11,6 +11,9 @@
 
         &-logo{
             font-size: 2rem;
+            animation-name: fadeIn;
+            animation-duration: 1s;
+
            
         }
 
@@ -21,6 +24,14 @@
                 font-size: 1.3rem;
                 opacity: .8;
                 font-weight: 600;
+                padding: .5rem 2rem;
+                border-radius: 5rem;
+                transition: all .5s;
+
+                &:hover {
+                    color: $color-white;
+                    background-color: $color-pink;
+                }
             }
 
 
@@ -43,7 +54,11 @@
         &-header{
             font-size: 3rem;
             color: $color-black;
-            animation: moveInLeft 1s;
+            animation-name: moveInLeft;
+            animation-duration: 1s;
+            animation-delay: 1s;
+            animation-fill-mode: backwards;
+            
         
 
         }
@@ -54,6 +69,11 @@
             color: $color-black;
             opacity: .7;
             margin-bottom: 2rem;
+
+            animation-name: moveInRight;
+            animation-duration: 1s;
+            animation-delay: 1s;
+            animation-fill-mode: backwards;
 
         }
 
