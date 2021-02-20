@@ -12,7 +12,7 @@ const Logo = ({ nav }) => {
           </span>
         </div>
       ) : (
-        <div className="logo">
+        <div className="logo-n">
           Man<span className="span">deal</span>
         </div>
       )}

@@ -43,14 +43,16 @@ const Login = () => {
                 <span className="span">Thanks,</span> for Revisiting.
               </div>
               <div className="login_main-left--des">
-                Introducing E-Maindi and simplifying Life of Farmer and
-                Consumer.
+                Introducing E-Mandi and simplifying Life of Farmer and Consumer.
               </div>
             </div>
 
             <div className="login_main-right">
               <div className="login_main-right--form">
                 <h1 className="login_main-right--form-heading">Login</h1>
+                {err.show && (
+                  <div style={{ color: "rgb(216, 37, 98)" }}>{err.msg}</div>
+                )}
                 <input
                   value={authData.phone}
                   onChange={(e) => {
@@ -64,6 +66,7 @@ const Login = () => {
                   className="login_main-right--form-email input"
                 />
                 <br />
+
                 <input
                   value={authData.password}
                   onChange={(e) => {

@@ -1,12 +1,15 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { connect } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import Logo from "../components/logo";
 import { setAuth, setUserData } from "../store/actions";
+import { AuthContext } from "../app";
 
 const SignUp = ({ setAuthStore, setUserDataStore }) => {
   let history = useHistory();
+
+  let { authRes, setAuthRes } = useContext(AuthContext);
 
   let [authData, setAuthData] = useState({
     name: "",
@@ -29,8 +32,10 @@ const SignUp = ({ setAuthStore, setUserDataStore }) => {
     ) {
       let res = await axios.post("/api/v1/auth/signup", authData);
       if (res.data.res) {
-        setUserDataStore(res.data.userdata);
-        setAuthStore(true);
+        setAuthRes({
+          auth: res.data.res,
+          userdata: res.data.userdata,
+        });
 
         history.push("/seller");
       } else {
