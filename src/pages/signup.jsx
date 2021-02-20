@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import Logo from "../components/logo";
 import { setAuth, setUserData } from "../store/actions";
 
 const SignUp = ({ setAuthStore, setUserDataStore }) => {
@@ -49,11 +50,7 @@ const SignUp = ({ setAuthStore, setUserDataStore }) => {
   return (
     <div className="bgpic">
       <div className="reg">
-        <div className="reg_nav nav">
-          <h1 className="logo">
-            Man<span className="span">deal</span>
-          </h1>
-        </div>
+        <Logo nav />
 
         <div className="reg_form">
           <h1 className="reg_form-heading">
@@ -163,7 +160,10 @@ const SignUp = ({ setAuthStore, setUserDataStore }) => {
               cursor: "pointer",
             }}
           >
-            or Already Registered, <span className="span">Login Here :-</span>
+            Already have an Account?
+            <span className="span">
+              <Link to="/login"> Login Now </Link>
+            </span>
           </p>
         </div>
       </div>

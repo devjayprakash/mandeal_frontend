@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Logo from "../components/logo";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   let [authData, setAuthData] = useState({
@@ -77,7 +78,10 @@ const Login = () => {
                 />
 
                 <div className="login_main-right--form-new_user">
-                  New to mandeal? <span> Register Now</span>
+                  New to mandeal?{" "}
+                  <Link to="/signup">
+                    <span> Register Now</span>
+                  </Link>
                 </div>
                 <div
                   onClick={() => {
