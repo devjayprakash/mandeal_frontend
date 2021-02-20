@@ -27,7 +27,6 @@ const SignUp = ({ setAuthStore, setUserDataStore }) => {
       authData.type !== ""
     ) {
       let res = await axios.post("/api/v1/auth/signup", authData);
-      console.log(res);
       if (res.data.res) {
         setUserDataStore(res.data.userdata);
         setAuthStore(true);

@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import axios from 'axios'
+import axios from "axios";
+import Logo from "../components/logo";
 
 const Login = () => {
-
   let [authData, setAuthData] = useState({
     phone: "",
     password: "",
   });
-
 
   let [err, setErr] = useState({
     show: false,
@@ -15,10 +14,7 @@ const Login = () => {
   });
 
   let loginUser = async () => {
-    if (
-      authData.phone !== "" &&
-      authData.password !== ""
-    ) {
+    if (authData.phone !== "" && authData.password !== "") {
       let res = await axios.post("/api/v1/auth/login", authData);
       if (res.res) {
         console.log("sucess");
@@ -32,24 +28,19 @@ const Login = () => {
       });
     }
   };
-  
 
   return (
     <div>
       <div className="xyz">
         <div className="login">
           <div className="login_nav nav">
-            <h1 className="logo">
-              Man<span className="span">deal</span>
-            </h1>
+            <Logo nav />
           </div>
-
           <div className="login_main">
             <div className="login_main-left">
               <div className="login_main-left--heading">
                 <span className="span">Thanks,</span> for Revisiting.
               </div>
-
               <div className="login_main-left--des">
                 Introducing E-Maindi and simplifying Life of Farmer and
                 Consumer.
@@ -86,12 +77,17 @@ const Login = () => {
                 />
 
                 <div className="login_main-right--form-new_user">
-                  Or <span>New to mandeal, Register here:-</span>
-                </div> 
-                <div onClick={() => {
-                  console.log("trying to login");
-                  loginUser();
-                }} className=" login-btn btn-red">Login</div>
+                  New to mandeal? <span> Register Now</span>
+                </div>
+                <div
+                  onClick={() => {
+                    console.log("trying to login");
+                    loginUser();
+                  }}
+                  className=" login-btn btn-red"
+                >
+                  Login
+                </div>
               </div>
             </div>
           </div>
@@ -101,4 +97,4 @@ const Login = () => {
   );
 };
 
-  export default Login;
+export default Login;
