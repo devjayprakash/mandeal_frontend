@@ -9,6 +9,12 @@
 .logo {
   font-weight: 700;
   color: $color-black;
+  padding: 0rem 0.5rem;
+  margin-top: 0%;
+}
+
+.logo-n {
+  color: $color-black;
 }
 
 [class*="btn"] {
@@ -60,17 +66,18 @@ hr {
 }
 
 .search {
+  max-width: 60%;
   background-color: $color-white;
   flex: 1;
-  margin: auto 5rem;
   padding: 1rem;
   border-radius: 123rem;
-
+  display: flex;
+  justify-content: space-between;
   &-container {
     display: flex;
     border-radius: 123rem;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 
     &-bar {
       border: none;
@@ -80,10 +87,25 @@ hr {
         outline: none;
       }
     }
-
     &-icon {
       width: 1rem;
       cursor: pointer;
     }
   }
+}
+
+.searchbox {
+  transition-duration: 300ms;
+  margin-right: 1rem;
+}
+
+.closed {
+  margin-left: 15rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

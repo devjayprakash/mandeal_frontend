@@ -137,12 +137,4 @@ const App = () => {
     </AuthContext.Provider>
   );
 };
-
-let mapProps = (state) => {
-  return {
-    auth: state.auth,
-    userdata: state.userdata,
-  };
-};
-
 export default App;

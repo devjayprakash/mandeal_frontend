@@ -18,8 +18,6 @@ const AddNewProduct = () => {
     },
   });
 
-  console.log(authRes);
-
   let addProduct = async () => {
     console.log(authRes);
 

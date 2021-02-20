@@ -1,9 +1,10 @@
-import axios from "axios";
 import React, { useState } from "react";
+import axios from "axios";
 import Logo from "../components/logo";
+import { Link } from "react-router-dom";
 
 const Login = () => {
-  let [loginDetail, setLoginDetail] = useState({
+  let [authData, setAuthData] = useState({
     phone: "",
     password: "",
   });
@@ -14,21 +15,18 @@ const Login = () => {
   });
 
   let loginUser = async () => {
-    try {
-      let res = await axios.post("/api/v1/auth/login", loginDetail);
-
-      console.log(res);
-
-      if (res.data.res === true) {
-        console.log("sucesss");
+    if (authData.phone !== "" && authData.password !== "") {
+      let res = await axios.post("/api/v1/auth/login", authData);
+      if (res.res) {
+        console.log("sucess");
       } else {
-        setErr({
-          show: true,
-          msg: res.msg,
-        });
+        console.log("failed");
       }
-    } catch (e) {
-      setErr({ show: true, msg: "Invalid details provided" });
+    } else {
+      setErr({
+        show: true,
+        msg: "Please full all the details and try again",
+      });
     }
   };
 
@@ -56,24 +54,24 @@ const Login = () => {
                   <div style={{ color: "rgb(216, 37, 98)" }}>{err.msg}</div>
                 )}
                 <input
-                  value={loginDetail.phone}
+                  value={authData.phone}
                   onChange={(e) => {
-                    setLoginDetail({
-                      ...loginDetail,
+                    setAuthData({
+                      ...authData,
                       phone: e.target.value,
                     });
                   }}
                   type="text"
-                  placeholder="Phone"
+                  placeholder="Phone Number"
                   className="login_main-right--form-email input"
                 />
                 <br />
 
                 <input
-                  value={loginDetail.password}
+                  value={authData.password}
                   onChange={(e) => {
-                    setLoginDetail({
-                      ...loginDetail,
+                    setAuthData({
+                      ...authData,
                       password: e.target.value,
                     });
                   }}
@@ -83,7 +81,10 @@ const Login = () => {
                 />
 
                 <div className="login_main-right--form-new_user">
-                  New to mandeal? <span> Register Now</span>
+                  New to mandeal?{" "}
+                  <Link to="/signup">
+                    <span> Register Now</span>
+                  </Link>
                 </div>
                 <div
                   onClick={() => {
@@ -92,10 +93,6 @@ const Login = () => {
                   }}
                   className=" login-btn btn-red"
                 >
-                  Login
-                </div>
-
-                <div onClick={() => loginUser()} className=" login-btn btn-red">
                   Login
                 </div>
               </div>

@@ -1,36 +1,32 @@
 import React from "react";
+import Logo from "../components/logo";
+import Search from "../components/search";
 
 const BuyerHomePage = () => {
   return (
     <div>
-      <div className="sell">
-        <div className="sell_nav">
-          <div className="sell_nav-logo logo">
-            Man<span className="span">deal</span>
-          </div>
-          <div className="search">
-            <div className="search-container">
-              <input
-                type="text"
-                className="search-container-bar"
-                placeholder="Search for Products"
+      <div class="sell">
+        <div class="sell_nav">
+          <Logo nav />
+          <div
+            style={{
+              display: "flex",
+              minWidth: "500px",
+            }}
+          >
+            <Search />
+            <div className="sell_nav-profile">
+              <img
+                src="../images/icons/bell.png"
+                alt=""
+                className="sell_nav-profile-bell"
               />
-              <div className="search-container-icon">
-                <img src="../images/icons/search.svg" alt="search" />
-              </div>
+              <img
+                src="../images/icons/avatar.png"
+                alt=""
+                className="sell_nav-profile-avatar"
+              />
             </div>
-          </div>
-          <div className="sell_nav-profile">
-            <img
-              src="../images/icons/bell.png"
-              alt=""
-              className="sell_nav-profile-bell"
-            />
-            <img
-              src="../images/icons/avatar.png"
-              alt=""
-              className="sell_nav-profile-avatar"
-            />
           </div>
         </div>
         <hr className="md mu" />
