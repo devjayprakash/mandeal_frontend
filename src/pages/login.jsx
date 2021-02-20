@@ -1,9 +1,9 @@
-import React, { useState } from "react";
 import axios from "axios";
+import React, { useState } from "react";
 import Logo from "../components/logo";
 
 const Login = () => {
-  let [authData, setAuthData] = useState({
+  let [loginDetail, setLoginDetail] = useState({
     phone: "",
     password: "",
   });
@@ -14,18 +14,21 @@ const Login = () => {
   });
 
   let loginUser = async () => {
-    if (authData.phone !== "" && authData.password !== "") {
-      let res = await axios.post("/api/v1/auth/login", authData);
-      if (res.res) {
-        console.log("sucess");
+    try {
+      let res = await axios.post("/api/v1/auth/login", loginDetail);
+
+      console.log(res);
+
+      if (res.data.res === true) {
+        console.log("sucesss");
       } else {
-        console.log("failed");
+        setErr({
+          show: true,
+          msg: res.msg,
+        });
       }
-    } else {
-      setErr({
-        show: true,
-        msg: "Please full all the details and try again",
-      });
+    } catch (e) {
+      setErr({ show: true, msg: "Invalid details provided" });
     }
   };
 
@@ -42,32 +45,35 @@ const Login = () => {
                 <span className="span">Thanks,</span> for Revisiting.
               </div>
               <div className="login_main-left--des">
-                Introducing E-Maindi and simplifying Life of Farmer and
-                Consumer.
+                Introducing E-Mandi and simplifying Life of Farmer and Consumer.
               </div>
             </div>
 
             <div className="login_main-right">
               <div className="login_main-right--form">
                 <h1 className="login_main-right--form-heading">Login</h1>
+                {err.show && (
+                  <div style={{ color: "rgb(216, 37, 98)" }}>{err.msg}</div>
+                )}
                 <input
-                  value={authData.phone}
+                  value={loginDetail.phone}
                   onChange={(e) => {
-                    setAuthData({
-                      ...authData,
+                    setLoginDetail({
+                      ...loginDetail,
                       phone: e.target.value,
                     });
                   }}
                   type="text"
-                  placeholder="Phone Number"
+                  placeholder="Phone"
                   className="login_main-right--form-email input"
                 />
                 <br />
+
                 <input
-                  value={authData.password}
+                  value={loginDetail.password}
                   onChange={(e) => {
-                    setAuthData({
-                      ...authData,
+                    setLoginDetail({
+                      ...loginDetail,
                       password: e.target.value,
                     });
                   }}
@@ -86,6 +92,10 @@ const Login = () => {
                   }}
                   className=" login-btn btn-red"
                 >
+                  Login
+                </div>
+
+                <div onClick={() => loginUser()} className=" login-btn btn-red">
                   Login
                 </div>
               </div>

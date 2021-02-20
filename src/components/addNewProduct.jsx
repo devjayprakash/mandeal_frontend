@@ -1,23 +1,36 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { AuthContext } from "../app";
 
 const AddNewProduct = () => {
+  let { authRes, setAuthRes } = useContext(AuthContext);
   let [err, setErr] = useState({});
   let history = useHistory();
 
   let [product, setProduct] = useState({
-    productName: "",
+    name: "",
     description: "",
-    sellerName: "",
-    price: null,
+    createdBy: "",
+    mppk: {
+      currency: "Rs.",
+      amount: null,
+    },
   });
 
+  console.log(authRes);
+
   let addProduct = async () => {
+    console.log(authRes);
+
+    setProduct({
+      ...product,
+      createdBy: authRes.userdata._id,
+    });
     if (
-      product.productName !== "" &&
+      product.name !== "" &&
       product.description !== "" &&
-      product.sellerName !== "" &&
+      product.createdBy !== "" &&
       product.price !== null
     ) {
       let res = await axios.post("/api/v1/product/createProduct", product);
@@ -26,13 +39,13 @@ const AddNewProduct = () => {
       } else {
         setErr({
           show: true,
-          msg: "Login f",
+          msg: "",
         });
       }
     } else {
       setErr({
         show: true,
-        msg: "Please full all the details and try again",
+        msg: "Please fill all the details and try again",
       });
       console.log(err);
     }
@@ -45,7 +58,7 @@ const AddNewProduct = () => {
           <hr className="md" />
           <input
             onChange={(e) => {
-              setProduct({ ...product, productName: e.target.value });
+              setProduct({ ...product, name: e.target.value });
             }}
             type="text"
             className="sell_new-product--name "
@@ -63,15 +76,13 @@ const AddNewProduct = () => {
           <div className="sell_new-product--c">
             <input
               onChange={(e) => {
-                setProduct({ ...product, sellerName: e.target.value });
-              }}
-              type="text"
-              className="sell_new-product--c-seller "
-              placeholder="Name Of Seller"
-            />
-            <input
-              onChange={(e) => {
-                setProduct({ ...product, price: e.target.value });
+                setProduct({
+                  ...product,
+                  mppk: {
+                    currency: "Rs.",
+                    amount: e.target.value,
+                  },
+                });
               }}
               type="text"
               className="sell_new-product--c-price "
