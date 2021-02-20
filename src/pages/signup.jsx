@@ -1,7 +1,12 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { setAuth, setUserData } from "../store/actions";
 
-const SignUp = () => {
+const SignUp = ({ setAuthStore, setUserDataStore }) => {
+  let history = useHistory();
+
   let [authData, setAuthData] = useState({
     name: "",
     phone: "",
@@ -22,10 +27,17 @@ const SignUp = () => {
       authData.type !== ""
     ) {
       let res = await axios.post("/api/v1/auth/signup", authData);
-      if (res.res) {
-        console.log("sucess");
+      console.log(res);
+      if (res.data.res) {
+        setUserDataStore(res.data.userdata);
+        setAuthStore(true);
+
+        history.push("/seller");
       } else {
-        console.log("failed");
+        setErr({
+          show: true,
+          msg: "Login failed. Please give valid detail and try again.",
+        });
       }
     } else {
       setErr({
@@ -112,7 +124,7 @@ const SignUp = () => {
               type="radio"
               placeholder="Buyer"
               className="reg_form-role--buyer"
-            />{" "}
+            />
             <p
               style={{
                 color: "#D82562",
@@ -160,4 +172,22 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+let mapProps = (state) => {
+  return {
+    auth: state.auth,
+    userdata: state.userdata,
+  };
+};
+
+let mapActions = (dispatch) => {
+  return {
+    setAuthStore: (payload) => {
+      return dispatch(setAuth(payload));
+    },
+    setUserDataStore: (payload) => {
+      return dispatch(setAuth(payload));
+    },
+  };
+};
+
+export default connect(mapProps, mapActions)(SignUp);

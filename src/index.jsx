@@ -7,14 +7,12 @@ import SignUp from "./pages/signup";
 import BuyerHomePage from "./pages/buyerHomePage";
 import SellerHomePage from "./pages/sellerHomePage";
 import "./style/main.scss";
-
-let authenticate = (component) => {
-  let token = document.cookie.jwt;
-};
+import { Provider } from "react-redux";
+import store from "./store";
 
 let App = () => {
   return (
-    <div>
+    <Provider store={store}>
       <BrowserRouter>
         <Switch>
           <Route exact component={Homepage} path={"/"} />
@@ -24,7 +22,7 @@ let App = () => {
           <Route component={SellerHomePage} path={"/seller"} />
         </Switch>
       </BrowserRouter>
-    </div>
+    </Provider>
   );
 };
 
