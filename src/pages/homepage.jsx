@@ -1,13 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Logo from "../components/logo";
 
 const Homepage = () => {
   return (
     <div className="home">
       <div className="home_nav nav">
-        <div className="home_nav-logo logo">
-          Man<span className="span">deal</span>
-        </div>
+        <Logo nav />
         <div className="home_nav-login">
           <Link to={"/login"}>Login</Link>
         </div>
@@ -15,7 +14,8 @@ const Homepage = () => {
 
       <div className="home_main">
         <h1 className="home_main-header">
-          Welcome to Men<span className="span">deal...</span>
+          Welcome to &nbsp;
+          <Logo />
         </h1>
         <div className="home_main-tagline">
           The mordern form of perfect MANDI
