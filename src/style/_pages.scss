@@ -1,0 +1,385 @@
+// Home
+
+.home {
+  height: 100vh;
+  width: 100wh;
+  //background: url("/images/icons/homebg.png");
+
+  &_nav {
+    padding: 3rem 4rem;
+    justify-content: space-between;
+
+    &-logo {
+      font-size: 2rem;
+    }
+
+    &-login {
+      a {
+        color: $color-pink;
+        font-size: 1.3rem;
+        opacity: 0.8;
+        font-weight: 600;
+      }
+    }
+  }
+
+  &_main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 6rem 2rem auto 2rem;
+
+    & > * {
+      margin-bottom: 1rem;
+    }
+
+    &-header {
+      font-size: 3rem;
+      color: $color-black;
+    }
+
+    &-tagline {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: $color-black;
+      opacity: 0.7;
+      margin-bottom: 2rem;
+    }
+
+    &-btn {
+      font-size: 1.5rem;
+      height: 3rem;
+      width: 10rem;
+    }
+  }
+}
+
+//// Login
+
+.xyz {
+  height: 100vh;
+  //background-image: url("/images/graps.jpg");
+
+  .login {
+    background-color: rgba(180, 180, 180, 0.575);
+    height: 100vh;
+
+    &-btn {
+      font-size: 1.3rem;
+      width: 10rem;
+      height: 3rem;
+    }
+
+    &_nav {
+      padding: 4rem;
+      font-size: 1rem;
+    }
+
+    &_main {
+      padding: 2rem 4rem;
+      display: flex;
+
+      flex-wrap: nowrap;
+
+      &-left {
+        width: 50%;
+        margin-top: 2rem;
+
+        &--heading {
+          font-size: 4rem;
+          font-weight: 600;
+          color: $color-black;
+        }
+
+        &--des {
+          font-size: 1.4rem;
+          color: $color-black;
+          font-weight: 500;
+          opacity: 0.9;
+        }
+      }
+
+      &-right {
+        background-color: rgba(123, 80, 242, 0.8);
+        margin: 0.1rem;
+        width: 50%;
+        margin-left: 2rem;
+        border-radius: 20px;
+
+        &--form {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding: 5rem 3.5rem;
+          & > * {
+            margin-bottom: 1rem;
+          }
+
+          &-heading {
+            font-size: 2rem;
+            font-weight: 500;
+            color: $color-white;
+            margin-bottom: 1rem;
+          }
+
+          &-email {
+            height: 3rem;
+            width: 80%;
+            border-radius: 5px;
+          }
+
+          &-password {
+            height: 3rem;
+            width: 80%;
+            border-radius: 5px;
+          }
+
+          &-new_user {
+            color: $color-white;
+            font-weight: 500;
+            opacity: 0.9;
+            display: pointer;
+
+            span {
+              color: $color-pink;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+///Registration
+.bgpic {
+  background-color: #f5f5f5;
+
+  .reg {
+    height: 100vh;
+
+    //background: url("/images/icons/Registerbg.png");
+    background-blend-mode: darken;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    &_nav {
+      padding: 4rem;
+      font-size: 1rem;
+    }
+
+    &_form {
+      padding: 1.5rem 3.3rem;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      & > * {
+        margin-bottom: 0.4rem;
+      }
+
+      &-heading {
+        font-weight: 300;
+        letter-spacing: 3px;
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      &-name {
+        height: 3rem;
+        width: 30%;
+        border-radius: 5px;
+        min-width: 26rem;
+      }
+
+      &-email {
+        height: 3rem;
+        width: 30%;
+        border-radius: 5px;
+        min-width: 26rem;
+      }
+
+      &-pass {
+        height: 3rem;
+        width: 30%;
+        border-radius: 5px;
+        min-width: 26rem;
+      }
+      &-role {
+        display: flex;
+        width: 15rem;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 1rem;
+
+        &--buyer {
+          margin-left: 1rem;
+          margin-right: 0.2rem;
+        }
+
+        &--seller {
+          margin-left: 1rem;
+          margin-right: 0.2rem;
+        }
+      }
+
+      &-btn {
+        font-size: 1.3rem;
+        height: 2.5rem;
+        width: 10rem;
+      }
+    }
+  }
+}
+
+//Selller home//////////////////////
+
+.sell {
+  background-color: #f5f5f5;
+  padding: 2rem;
+  &_nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &-logo {
+      font-size: 1.5rem;
+    }
+    &-profile {
+      display: flex;
+      align-items: center;
+      width: 5rem;
+      justify-content: space-between;
+
+      &-bell {
+        width: 1.6rem;
+      }
+
+      &-avatar {
+        width: 2.6rem;
+      }
+    }
+  }
+
+  &_heading {
+    color: $color-pink;
+    font-size: 3rem;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  //CARDS ITEMS
+  &_items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    //CARDS
+    &-cards {
+      margin-bottom: 0.7rem;
+      background-color: $color-white;
+      border-radius: 2rem;
+      display: flex;
+      align-items: center;
+      &--img {
+        border-radius: 100rem;
+        &-i {
+          width: 7rem;
+          border-radius: 100rem;
+          border: solid 0.5px rgba(180, 180, 180, 0.575);
+        }
+      }
+
+      &--main {
+        padding: 0.2rem;
+        margin-left: 1.5rem;
+        flex: 1;
+        &-heading {
+          color: $color-black;
+          font-size: 1.6rem;
+          font-weight: 600;
+        }
+        &-des {
+          color: #4640a1d3;
+          letter-spacing: 3px;
+        }
+        &-name {
+          color: $color-pink;
+          font-weight: 600;
+          font-size: 0.8rem;
+        }
+        &-price {
+          color: $color-black;
+          font-weight: 600;
+        }
+      }
+
+      &--btn {
+        width: 15rem;
+        margin-right: 1rem;
+        &-b {
+          width: 10rem;
+          height: 2.5rem;
+          font-size: 1.1rem;
+          border-radius: 15px;
+        }
+      }
+    }
+  }
+
+  &_new {
+    background-color: $color-white;
+    padding: 2rem;
+    &-product {
+      &--header {
+        font-weight: 600;
+        opacity: 0.9;
+      }
+
+      &--name {
+        width: 70%;
+        padding: 0.2rem;
+        outline: none;
+        border: solid;
+        border-width: 0 0 0.5px 0;
+        margin-bottom: 0.5rem;
+      }
+      &--des {
+        width: 70%;
+        padding: 0.2rem;
+        outline: none;
+        border: solid;
+        border-width: 0 0 0.5px 0;
+        margin-bottom: 0.5rem;
+      }
+      &--c {
+        display: flex;
+        margin-bottom: 1rem;
+
+        &-seller {
+          width: 33.5%;
+          padding: 0.2rem;
+          outline: none;
+          border: solid;
+          border-width: 0 0 0.5px 0;
+          margin-bottom: 0.5rem;
+          margin-right: 1rem;
+        }
+        &-price {
+          width: 33%;
+          padding: 0.2rem;
+          outline: none;
+          border: solid;
+          border-width: 0 0 0.5px 0;
+          margin-bottom: 0.5rem;
+        }
+      }
+    }
+  }
+}
+
+//Buyer Home Page
+
+//All codes are same as Seller page so no coding :)
