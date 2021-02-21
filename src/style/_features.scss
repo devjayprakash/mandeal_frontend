@@ -1,0 +1,90 @@
+.docs {
+    box-sizing: border-box;
+  .h1 {
+      padding: 2rem;
+      margin-bottom:1rem;
+      font-size: 4rem;
+      color: $color-black
+      opacity($color: .8)
+  }
+
+    &_cards {
+        display: flex;
+       
+         align-items: center;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        background-color: #f5f5f5;
+        padding: 1rem;
+       
+        margin: 1rem;
+       
+        width: 100%;
+
+
+        .card12{
+            width: 40%;
+            background-color: $color-white;
+            padding: 1rem;
+
+            img {
+            margin-right: 3rem;
+            width: 100%;
+            
+
+        }
+
+
+      
+            .h2 {
+                font-size: 2rem;
+                padding: 1rem;
+                color: $color-pink;
+                text-transform: capitalize;
+
+            }
+            .p {
+                font-size: 1rem;
+                color: $color-black;
+                 text-align: center;
+
+            }
+
+
+        
+
+
+    }
+
+
+        }
+
+        .c {
+            padding: 3rem;
+           h2 {
+               font-size: 2rem;
+
+           }
+           .in {
+               display: flex;
+               .p{
+                   font-size: 1rem;
+
+           }
+           img {
+               width: 13rem;
+               margin-right: 1rem;
+           }
+           }
+        }
+
+        
+
+
+     
+
+}
+
+
+
+

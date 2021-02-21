@@ -66,6 +66,8 @@ const AddNewProduct = ({ fetchProducts }) => {
       });
       console.log(err);
     }
+
+    fetchProducts();
   };
   return (
     <div>

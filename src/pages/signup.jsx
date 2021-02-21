@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useContext, useState } from "react";
 import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { setAuth, setUserData } from "../store/actions";
 import { AuthContext } from "../app";
 
@@ -169,7 +169,11 @@ const SignUp = ({ setAuthStore, setUserDataStore }) => {
               cursor: "pointer",
             }}
           >
-            or Already Registered, <span className="span">Login Here :-</span>
+            or Already Registered,{" "}
+            <Link to="/login">
+              {" "}
+              <span className="span">Login Here :-</span>
+            </Link>
           </p>
         </div>
       </div>

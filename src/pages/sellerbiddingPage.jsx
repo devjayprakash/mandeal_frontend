@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { AuthContext } from "../app";
 
 function timeSince(timeStamp) {
@@ -34,14 +34,36 @@ const Sellerbidding = () => {
 
   let { authRes, setAuthRes } = useContext(AuthContext);
 
+  let [showContact, setShowContact] = useState(false);
+
   let [err, setErr] = useState({
     show: false,
     msg: "",
   });
 
+  let history = useHistory();
+
   let [highestBidder, setHighestBidder] = useState(null);
 
   let [bidAmount, setBidAmount] = useState(0);
+
+  let sellTheProduct = async () => {
+    setShowContact(!showContact);
+  };
+
+  let deleteProduct = async () => {
+    try {
+      let res = await axios.delete(
+        "/api/v1/product/deleteProduct/" + product._id
+      );
+
+      if (res.data.res === true) {
+        history.push("/");
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   let params = useParams();
 
@@ -98,11 +120,6 @@ const Sellerbidding = () => {
             Man<span className="span">deal</span>
           </div>
           <div className="sell_nav-profile">
-            <img
-              src="./images/icons/bell.png"
-              alt=""
-              className="sell_nav-profile-bell"
-            />
             <img
               src="./images/icons/avatar.png"
               alt=""
@@ -161,7 +178,7 @@ const Sellerbidding = () => {
           <h1 className="sub_heading">Sell to higest bidder</h1>
           <hr className="md" />
 
-          {highestBidder !== null ? (
+          {highestBidder !== null && highestBidder !== undefined ? (
             <div className="sub_input">
               <div className="sub_input-t">
                 <div className="sub_input-t-kg">
@@ -176,13 +193,36 @@ const Sellerbidding = () => {
               </div>
             </div>
           ) : (
-            <h4>Loading ...</h4>
+            <h4>No bids found</h4>
           )}
 
-          <div className="sub_message">
-            Congratulations, Your product has been sold
+          {showContact && (
+            <div className={"sub_input"} style={{ marginTop: "30px" }}>
+              <h2>Contact number - ${highestBidder.createdBy.phone}</h2>
+            </div>
+          )}
+
+          <br />
+          <br />
+
+          <div style={{ display: "flex" }}>
+            <div onClick={() => sellTheProduct()} className="sub_btn btn-blue">
+              Show contact
+            </div>
+
+            <div
+              onClick={() => {
+                deleteProduct();
+              }}
+              style={{
+                marginLeft: "30px",
+                width: "200px",
+              }}
+              className="btn-red"
+            >
+              Delete product
+            </div>
           </div>
-          <div className="sub_btn btn-blue">Sell</div>
         </div>
 
         <hr />

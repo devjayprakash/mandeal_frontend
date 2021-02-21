@@ -7,6 +7,8 @@ const BuyerHomePage = () => {
   let [allProducts, setAllProducts] = useState([]);
   let [drop, setDrop] = useState(false);
 
+  let [searchQuery, setSearchQuery] = useState("");
+
   let history = useHistory();
 
   let fetchAllProducts = async () => {
@@ -15,6 +17,22 @@ const BuyerHomePage = () => {
       if (res.data.res === true) {
         console.log(res.data.products);
         setAllProducts(res.data.products);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  let search = async () => {
+    try {
+      if (searchQuery !== "") {
+        let res = await axios.get(
+          "/api/v1/product/searchProduct/" + searchQuery
+        );
+        if (res.data.res === true) {
+          setAllProducts(res.data.docs);
+          setSearchQuery("");
+        }
       }
     } catch (err) {
       console.log(err);
@@ -35,22 +53,25 @@ const BuyerHomePage = () => {
           <div className="search">
             <div className="search-container">
               <input
+                value={searchQuery}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                }}
                 type="text"
                 className="search-container-bar"
                 placeholder="Search for Products"
               />
-              <div className="search-container-icon">
+              <div
+                onClick={() => {
+                  search();
+                }}
+                className="search-container-icon"
+              >
                 <img src="/images/icons/search.svg" alt="search" />
               </div>
             </div>
           </div>
           <div className="sell_nav-profile">
-            <img
-              src="/images/icons/bell.png"
-              alt=""
-              className="sell_nav-profile-bell"
-            />
-
             <div>
               <img
                 onClick={() => setDrop(!drop)}
@@ -90,7 +111,7 @@ const BuyerHomePage = () => {
                       {pro.description}
                     </div>
                     <div className="sell_items-cards--main-name">
-                      Sold by {"test"}
+                      Sold by {pro.createdBy.name}
                     </div>
                     <div className="sell_items-cards--main-price">
                       Min Price: <span>₹100/ kg</span>

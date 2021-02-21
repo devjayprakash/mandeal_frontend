@@ -11,6 +11,7 @@ import axios from "axios";
 import SellerBiddingPage from "./pages/sellerbiddingPage";
 import Buyerbidding from "./pages/buyerbiddingPage";
 import Profile from "./pages/Profile";
+import Documentation from "./pages/docs";
 
 export let AuthContext = createContext();
 
@@ -196,6 +197,7 @@ const App = () => {
             }}
           />
           <Route path={"/profile"} component={Profile} />
+          <Route path={"/docs"} component={Documentation} />
         </Switch>
       </BrowserRouter>
     </AuthContext.Provider>

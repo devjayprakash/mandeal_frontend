@@ -1,11 +1,10 @@
-
-@import './abstract';
-@import './components';
-@import './global';
-@import './pages';
-@import './utility';
-
-
+@import "./abstract";
+@import "features";
+@import "./components";
+@import "./global";
+@import "./pages";
+@import "./utility";
+@import "./animation";
 
 // External Fonts
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");

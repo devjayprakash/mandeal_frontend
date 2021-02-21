@@ -1,11 +1,15 @@
 // Home
 
 .home {
+  @include fadein;
+
   height: 100vh;
   width: 100wh;
   //background: url("/images/icons/homebg.png");
 
   &_nav {
+    @include fadein;
+    animation-delay: 0.3s;
     padding: 3rem 4rem;
     justify-content: space-between;
 
@@ -24,6 +28,8 @@
   }
 
   &_main {
+    @include fadein;
+    animation-delay: 0.7s;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,11 +41,17 @@
     }
 
     &-header {
+      @include inleft;
+      @include fadein;
+      animation-delay: 0.8s;
+
       font-size: 3rem;
       color: $color-black;
     }
 
     &-tagline {
+      @include fadein;
+      animation-delay: 01s;
       font-size: 1.3rem;
       font-weight: 600;
       color: $color-black;
@@ -49,6 +61,8 @@
 
     &-btn {
       font-size: 1.5rem;
+      @include fadein;
+      animation-delay: 2s;
       height: 3rem;
       width: 10rem;
     }
@@ -58,6 +72,8 @@
 //// Login
 
 .xyz {
+  @include fadein;
+
   height: 100vh;
   //background-image: url("/images/graps.jpg");
 
@@ -90,6 +106,8 @@
           font-size: 4rem;
           font-weight: 600;
           color: $color-black;
+          @include fadein;
+          animation-delay: 0.5s;
         }
 
         &--des {
@@ -97,6 +115,8 @@
           color: $color-black;
           font-weight: 500;
           opacity: 0.9;
+          @include fadein;
+          animation-delay: 0.8s;
         }
       }
 
@@ -106,6 +126,8 @@
         width: 50%;
         margin-left: 2rem;
         border-radius: 20px;
+        @include fadein;
+        animation-delay: 0.5s;
 
         &--form {
           display: flex;
@@ -121,12 +143,16 @@
             font-weight: 500;
             color: $color-white;
             margin-bottom: 1rem;
+            @include fadein;
+            animation-delay: 0.5s;
           }
 
           &-email {
             height: 3rem;
             width: 80%;
             border-radius: 5px;
+            @include fadein;
+            animation-delay: 0.8s;
           }
 
           &-password {
@@ -622,7 +648,7 @@
   position: absolute;
   background-color: white;
   box-shadow: 1px 1px 15px #ddd;
-  // z-index: 1;
+  z-index: 1;
   border-radius: 5px;
   margin-top: 10px;
   transition-duration: 500ms;

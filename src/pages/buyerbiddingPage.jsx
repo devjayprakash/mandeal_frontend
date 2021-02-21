@@ -92,6 +92,7 @@ const Buyerbidding = () => {
           show: true,
           msg: "Your bid was made successfully",
         });
+        window.location.reload();
       }
     } catch (err) {
       console.log(err);
@@ -114,11 +115,6 @@ const Buyerbidding = () => {
             Man<span className="span">deal</span>
           </div>
           <div className="sell_nav-profile">
-            <img
-              src="./images/icons/bell.png"
-              alt=""
-              className="sell_nav-profile-bell"
-            />
             <img
               src="./images/icons/avatar.png"
               alt=""

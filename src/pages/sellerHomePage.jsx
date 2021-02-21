@@ -37,11 +37,6 @@ const SellerHomePage = () => {
           </div>
           <div className="sell_nav-profile">
             <div>
-              <img
-                src="./images/icons/bell.png"
-                alt=""
-                className="sell_nav-profile-bell"
-              />
               <ProfileDropdown isOpen={isDropDownOpen} />
             </div>
             <img

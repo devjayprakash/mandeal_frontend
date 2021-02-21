@@ -1,101 +1,132 @@
-//navbar 
+//navbar
 .nav {
-    height: 10vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
+  height: 10vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .logo {
-     font-weight: 700;
-    color: $color-black;
+  font-weight: 700;
+  color: $color-black;
+  //transition: all .5s ;
 }
 
-[class *= 'btn']{
-     height: 2rem;
-    width: 7rem;
+[class*="btn"] {
+  &,
+  &:link,
+  &:visited {
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    @include inup;
+
+    transition: all 0.2s;
+
     display: flex;
+    align-items: center;
+    justify-content: center;
+
     align-items: center;
     justify-content: center;
     border-radius: 50rem;
     color: $color-white;
-    font-size: .8rem;
-    font-weight: 500;
+    position: relative;
+    font-weight: 400;
     cursor: pointer;
+    transition: all 0.2s;
+    animation: moveInBottom 1s;
 
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+      &::after {
+        content: "";
+        transform: scaleX(1.4) scaleY(1.6);
+        opacity: 0.5;
+        color: $color-pink;
+      }
+      &:active,
+      &:focus {
+        outline: none;
+        transform: translateY(-1px);
+        box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+      }
+    }
+
+    //Change for the <button> element
+  }
 }
 
 .btn-red {
-    background-color: $color-pink;   
+  background-color: $color-pink;
 }
 
 .btn-blue {
-    background-color: $color-blue;
-    height: 2.5rem;
-                width: 15rem;
+  background-color: $color-blue;
+  height: 2.5rem;
+  width: 15rem;
 }
 
 .btn-green {
-    background-color:$color-green ;
-    height: 2.5rem;
-    width: 15rem;
+  background-color: $color-green;
+  height: 2.5rem;
+  width: 15rem;
 }
 
 .input {
+  padding-left: 1rem;
+  font-weight: 500;
+
+  outline: none;
+  border: none;
+  border-radius: 5rem;
+  &::placeholder {
+    // padding: 9px ;
+  }
+  &:active,
+  &:focus {
     outline: none;
-    border: none;
-    border-radius: 5rem;
-    &::placeholder{
-        padding: 9px ;
-    }
-    &:active, &:focus {
-        outline: none;
-        outline-style: none;
-    }
+    outline-style: none;
+  }
 }
 hr {
-    opacity: .5;
-    color: $color-black;
+  opacity: 0.5;
+  color: $color-black;
 }
 .footer {
-    margin-top: 5rem;
-    width: 100wh;
-    height: 200px;
-    background-color: $color-blue;
-    
+  margin-top: 5rem;
+  width: 100wh;
+  height: 200px;
+  background-color: $color-blue;
 }
 
 .search {
-    background-color: $color-white;
-    flex: 1;
-    margin: auto 5rem;
-    padding: 1rem;
+  background-color: $color-white;
+  flex: 1;
+  margin: auto 5rem;
+  padding: 1rem;
+  border-radius: 123rem;
+
+  &-container {
+    display: flex;
     border-radius: 123rem;
-     
-    &-container {
-        display: flex;
-        border-radius: 123rem;
-        align-items: center;
-        justify-content: space-around;
-        
+    align-items: center;
+    justify-content: space-around;
 
-        &-bar{
-            border: none;
-            &:active, &:focus{
-                outline-style: none;
-                outline: none;
-            }
-
-             
-
-        }
-
-        &-icon {
-            width: 1rem;
-            cursor: pointer;
-
-        }
+    &-bar {
+      border: none;
+      &:active,
+      &:focus {
+        outline-style: none;
+        outline: none;
+      }
     }
+
+    &-icon {
+      width: 1rem;
+      cursor: pointer;
+    }
+  }
 }
 
 //Card

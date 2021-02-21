@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../app";
 
 const Login = () => {
@@ -90,7 +91,10 @@ const Login = () => {
                 />
 
                 <div className="login_main-right--form-new_user">
-                  Or <span>New to mandeal, Register here:-</span>
+                  Or{" "}
+                  <Link to={"/signup"}>
+                    <span>New to mandeal, Register here:-</span>
+                  </Link>
                 </div>
 
                 <div onClick={() => loginUser()} className=" login-btn btn-red">
