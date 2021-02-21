@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
-import { Switch, Route, BrowserRouter } from "react-router-dom";
+import { Switch, Route, BrowserRouter, Redirect } from "react-router-dom";
 import Homepage from "./pages/homepage";
 import Login from "./pages/login";
 import SignUp from "./pages/signup";
@@ -8,6 +8,9 @@ import SellerHomePage from "./pages/sellerHomePage";
 import "./style/main.scss";
 import { extractCookies } from "./utility";
 import axios from "axios";
+import SellerBiddingPage from "./pages/sellerbiddingPage";
+import Buyerbidding from "./pages/buyerbiddingPage";
+import Profile from "./pages/Profile";
 
 export let AuthContext = createContext();
 
@@ -20,8 +23,6 @@ const App = () => {
   let [authDone, setAuthDone] = useState(false);
 
   let authUser = async () => {
-    console.log(document.cookie);
-
     if (document.cookie !== null && document.cookie !== "") {
       let token = extractCookies(document.cookie).jwt;
 
@@ -31,24 +32,40 @@ const App = () => {
             token: token,
           });
 
-          console.log(res);
-
           if (res.data.res) {
-            setAuthDone(true);
             setAuthRes({
               auth: true,
-              userdata: false,
+              userdata: res.data.userdata,
             });
+            setAuthDone(true);
           } else {
-            setAuthRes(true);
+            setAuthRes({
+              auth: false,
+              userdata: null,
+            });
+
+            setAuthDone(true);
           }
         } catch (err) {
+          setAuthRes({
+            auth: false,
+            userdata: null,
+          });
           console.log(err);
+          setAuthDone(true);
         }
       } else {
-        setAuthRes(true);
+        setAuthRes({
+          auth: false,
+          userdata: null,
+        });
+        setAuthDone(true);
       }
     } else {
+      setAuthRes({
+        auth: false,
+        userdata: null,
+      });
       setAuthDone(true);
     }
   };
@@ -115,7 +132,11 @@ const App = () => {
           <Route
             render={() => {
               if (authRes.auth === true) {
-                return <BuyerHomePage />;
+                if (authRes.userdata.type === "seller") {
+                  return <Redirect to={"/seller"} />;
+                } else {
+                  return <BuyerHomePage />;
+                }
               } else {
                 return <Login />;
               }
@@ -125,13 +146,56 @@ const App = () => {
           <Route
             render={() => {
               if (authRes.auth === true) {
-                return <SellerHomePage />;
+                if (authRes.userdata.type === "seller") {
+                  return <SellerHomePage />;
+                } else {
+                  return <Redirect to={"/buyer"} />;
+                }
               } else {
                 return <Login />;
               }
             }}
             path={"/seller"}
           />
+          <Route
+            path={"/buyerbidding/:productId"}
+            render={() => {
+              if (authRes.auth === true) {
+                if (authRes.userdata.type === "seller") {
+                  return (
+                    <h1>
+                      Invalid request. Please go to seller bidding by selecting
+                      any product.
+                    </h1>
+                  );
+                } else {
+                  return <Buyerbidding />;
+                }
+              } else {
+                return <Login />;
+              }
+            }}
+          />
+          <Route
+            path={"/sellerbidding/:productId"}
+            render={() => {
+              if (authRes.auth === true) {
+                if (authRes.userdata.type === "seller") {
+                  return <SellerBiddingPage />;
+                } else {
+                  return (
+                    <h1>
+                      Invalid request. Please go to buyer bidding by selecting
+                      any product.
+                    </h1>
+                  );
+                }
+              } else {
+                return <Login />;
+              }
+            }}
+          />
+          <Route path={"/profile"} component={Profile} />
         </Switch>
       </BrowserRouter>
     </AuthContext.Provider>

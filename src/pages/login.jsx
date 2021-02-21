@@ -1,7 +1,10 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../app";
 
 const Login = () => {
+  let { authRes, setAuthRes } = useContext(AuthContext);
+
   let [loginDetail, setLoginDetail] = useState({
     phone: "",
     password: "",
@@ -16,10 +19,11 @@ const Login = () => {
     try {
       let res = await axios.post("/api/v1/auth/login", loginDetail);
 
-      console.log(res);
-
       if (res.data.res === true) {
-        console.log("sucesss");
+        setAuthRes({
+          auth: true,
+          userdata: res.data.userdata,
+        });
       } else {
         setErr({
           show: true,

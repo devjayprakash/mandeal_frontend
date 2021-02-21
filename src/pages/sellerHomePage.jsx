@@ -1,6 +1,33 @@
-import React from "react";
+import axios from "axios";
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../app";
+import AddNewProduct from "../components/addNewProduct";
+import ProfileDropdown from "../components/dropdown";
+import SellerCard from "../components/sellerCard";
 
 const SellerHomePage = () => {
+  let [allSellerProducts, setAllSellerProducts] = useState([]);
+
+  let { authRes, setAuthRes } = useContext(AuthContext);
+
+  let fetchSellerProducts = async () => {
+    try {
+      let res = await axios.get(
+        "/api/v1/product/getAllProducts/" + authRes.userdata._id
+      );
+
+      setAllSellerProducts(res.data.products);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    fetchSellerProducts();
+  }, []);
+
+  let [isDropDownOpen, setIsDropDownOpen] = useState(false);
+
   return (
     <div>
       <div className="sell">
@@ -9,12 +36,18 @@ const SellerHomePage = () => {
             Man<span className="span">deal</span>
           </div>
           <div className="sell_nav-profile">
+            <div>
+              <img
+                src="./images/icons/bell.png"
+                alt=""
+                className="sell_nav-profile-bell"
+              />
+              <ProfileDropdown isOpen={isDropDownOpen} />
+            </div>
             <img
-              src="./images/icons/bell.png"
-              alt=""
-              className="sell_nav-profile-bell"
-            />
-            <img
+              onClick={() => {
+                setIsDropDownOpen(!isDropDownOpen);
+              }}
               src="./images/icons/avatar.png"
               alt=""
               className="sell_nav-profile-avatar"
@@ -24,66 +57,15 @@ const SellerHomePage = () => {
         <hr />
         <h1 className="sell_heading">Your Products</h1>
         <div className="sell_items">
-          <div className="sell_items-cards">
-            <div className="sell_items-cards--img">
-              <img
-                src="./images/nimbu.jpg"
-                className="sell_items-cards--img-i"
-                alt="Lemon"
-              />
-            </div>
-
-            <div className="sell_items-cards--main">
-              <h2 className="sell_items-cards--main-heading">Lemon</h2>
-              <div className="sell_items-cards--main-des">
-                High Quality Premium Lemon
-              </div>
-              <div className="sell_items-cards--main-name">
-                Sold by Hari Mohan Prasad
-              </div>
-              <div className="sell_items-cards--main-price">
-                Min Price: <span>₹100/ kg</span>
-              </div>
-            </div>
-
-            <div className="sell_items-cards--btn">
-              <div className="sell_items-cards--btn-b btn-blue">See Stats</div>
-            </div>
-          </div>
+          {allSellerProducts.length !== 0 &&
+            allSellerProducts.map((pro, i) => {
+              return <SellerCard id={i} data={pro} />;
+            })}
         </div>
 
         <hr className="mu md" />
 
-        <div className="sell_new">
-          <div className="sell_new-product">
-            <h1 className="sell_new-product--header">Create New Product</h1>
-            <hr className="md" />
-            <input
-              type="text"
-              className="sell_new-product--name "
-              placeholder="Name Of Product"
-            />
-            <br />
-            <input
-              type="text"
-              className="sell_new-product--des "
-              placeholder="Name Of Product"
-            />
-            <div className="sell_new-product--c">
-              <input
-                type="text"
-                className="sell_new-product--c-seller "
-                placeholder="Name Of Seller"
-              />
-              <input
-                type="text"
-                className="sell_new-product--c-price "
-                placeholder="Price Per kg"
-              />
-            </div>
-            <div className="sell-new-product-btn btn-blue">Add New Product</div>
-          </div>
-        </div>
+        <AddNewProduct fetchProducts={fetchSellerProducts} />
       </div>
       <div className="footer"></div>
     </div>

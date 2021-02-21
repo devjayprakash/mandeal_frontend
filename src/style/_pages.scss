@@ -238,7 +238,8 @@
 
 .sell {
   background-color: #f5f5f5;
-  padding: 2rem;
+  padding: 2rem 3rem;
+
   &_nav {
     display: flex;
     align-items: center;
@@ -383,3 +384,268 @@
 //Buyer Home Page
 
 //All codes are same as Seller page so no coding :)
+
+//Seller bidding Page////////////////
+
+.sell {
+  &-c {
+    background-color: $color-white;
+    padding: 2rem 5rem;
+    display: flex;
+    align-items: center;
+    &--img {
+      &-i {
+        border-radius: 10000rem;
+
+        width: 15rem;
+        border: solid 0.5px rgba(180, 180, 180, 0.575);
+      }
+    }
+
+    &--main {
+      margin: auto 3rem;
+
+      &-heading {
+        color: $color-black;
+        font-size: 5rem;
+        font-weight: 500;
+      }
+      &-des {
+        color: rgba(113, 55, 180, 0.884);
+        letter-spacing: 2px;
+        opacity: 0.9;
+        font-size: 1.5rem;
+        margin-top: -0.5rem;
+      }
+      &-name {
+        color: $color-pink;
+        font-weight: 600;
+        font-size: 0.8rem;
+      }
+      &-price {
+        margin-top: 0.1rem;
+        color: $color-black;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .bidding {
+    &_heading {
+      font-size: 3rem;
+      font-weight: 500;
+      color: $color-black;
+      text-align: center;
+    }
+    &_container {
+      background-color: $color-white;
+      padding: 3rem;
+
+      &-card {
+        border-radius: 1.1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #f5f5f5;
+        margin-bottom: 1rem;
+
+        &-main {
+          padding: 1.5rem;
+
+          &-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: $color-black;
+            opacity: 0.7;
+          }
+
+          &-buyer {
+            color: $color-blue;
+            font-weight: 600;
+          }
+        }
+
+        &-btn {
+          margin-right: 2rem;
+          width: 10rem;
+          height: 2rem;
+        }
+      }
+    }
+  }
+
+  .submit {
+    padding: 3rem;
+    background-color: $color-white;
+    &_heading {
+      font-weight: 500;
+      font-size: 2rem;
+    }
+
+    &_input {
+      background-color: $color-black;
+
+      display: flex;
+      width: 70%;
+      height: 2rem;
+      border-radius: 100rem;
+      align-items: center;
+      &-text {
+        margin-left: 0;
+        padding-left: 2rem;
+        border-radius: 0;
+        background-color: #f5f5f5;
+
+        font-weight: 500;
+        opacity: 0.9;
+        height: 100%;
+        width: 100%;
+      }
+
+      &-kg {
+        margin: auto 2rem;
+        color: $color-white;
+        font-weight: 500;
+        font-size: 1rem;
+        min-width: 100px;
+      }
+    }
+    &_message {
+      color: rgb(20, 155, 76);
+      font-weight: 600;
+      opacity: 0.9;
+      margin: 0.3rem auto;
+    }
+
+    &_btn {
+      height: 3r;
+    }
+  }
+
+  .sub {
+    padding: 3rem;
+    background-color: $color-white;
+
+    &_heading {
+      font-weight: 500;
+      font-size: 2rem;
+      opacity: 0.8;
+    }
+
+    &_input {
+      background-color: #f5f5f5;
+
+      width: 90%;
+
+      border-radius: 0.5rem;
+      align-items: center;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      &-t {
+        &-kg {
+          margin: auto 2rem;
+          color: $color-black;
+          font-weight: 500;
+          font-size: 1rem;
+          min-width: 100px;
+        }
+
+        &-chota {
+          margin: auto 2rem;
+          color: $color-blue;
+          font-weight: 600;
+        }
+      }
+
+      &-btn {
+        height: 2rem;
+      }
+    }
+    &_message {
+      color: $color-green;
+      font-weight: 600;
+      opacity: 0.9;
+      margin: 0.3rem auto;
+    }
+
+    &_btn {
+      height: 2rem;
+    }
+  }
+}
+
+//Pages. Profile..
+
+.profile {
+  height: 100vh;
+  background-color: $color-white;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &-pic {
+    height: 40vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 10rem;
+      border-radius: 100rem;
+    }
+    margin-bottom: 4rem;
+  }
+
+  &-details {
+    width: 100%;
+    padding: 3rem;
+    & > * {
+      margin-bottom: 1rem;
+    }
+    &--name {
+    }
+
+    &--work {
+    }
+
+    &--description {
+    }
+  }
+}
+
+.dropdown {
+  font-size: 14pt;
+  position: absolute;
+  background-color: white;
+  box-shadow: 1px 1px 15px #ddd;
+  // z-index: 1;
+  border-radius: 5px;
+  margin-top: 10px;
+  transition-duration: 500ms;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      padding: 2px;
+      width: 120px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+
+      img {
+        margin: 0px 10px;
+      }
+
+      &:hover {
+        background-color: #c6bfff;
+      }
+    }
+  }
+}

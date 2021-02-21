@@ -41,7 +41,7 @@ const SignUp = ({ setAuthStore, setUserDataStore }) => {
       } else {
         setErr({
           show: true,
-          msg: "Login failed. Please give valid detail and try again.",
+          msg: res.data.msg,
         });
       }
     } else {
