@@ -76,10 +76,9 @@ const Sellerbidding = () => {
     let highest = bidres.data.docs[0];
 
     //calculating the highest bidder
-    for (let i = 0; i < bidres.data.docs.length; i++) {
-      let bi = bidres.data.docs[0];
-      if (highest.amount.amount < bi.amount.amount) {
-        highest = bi;
+    for (let amount of bidres.data.docs) {
+      if (highest.amount.amount < amount.amount.amount) {
+        highest = amount;
       }
     }
 
@@ -109,7 +108,21 @@ const Sellerbidding = () => {
   }, []);
 
   if (product === null) {
-    return <h1>Loading ...</h1>;
+    return (
+      <div
+        width={{
+          position: "fixed",
+          width: "100%",
+          height: "100vh",
+          backgoundColor: "white",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <img src="/images/loading.gif" width="50" height="50" />
+      </div>
+    );
   }
 
   return (
@@ -217,10 +230,11 @@ const Sellerbidding = () => {
               style={{
                 marginLeft: "30px",
                 width: "200px",
+                height: "30px",
               }}
               className="btn-red"
             >
-              Delete product
+              Delete
             </div>
           </div>
         </div>

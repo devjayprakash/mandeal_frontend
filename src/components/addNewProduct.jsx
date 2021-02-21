@@ -124,10 +124,7 @@ const AddNewProduct = ({ fetchProducts }) => {
           <br />
           <br />
           <div
-            onClick={() => {
-              //   Todo
-              addProduct();
-            }}
+            onClick={() => addProduct()}
             className="sell-new-product-btn btn-blue"
           >
             Add New Product
