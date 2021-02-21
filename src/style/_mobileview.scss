@@ -1,0 +1,21 @@
+@media only screen and (max-width: 600px) {
+  .home {
+    &_nav {
+       //
+       padding: 1px;
+
+        &-logo {
+            font-size: 1rem;
+            
+
+        }
+    }
+  }
+}
+@media only screen and (max-width: 600px) {
+  .logo {
+    font-size: 2rem;
+    padding: none;
+    
+  }
+}

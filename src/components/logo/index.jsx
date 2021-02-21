@@ -6,9 +6,9 @@ const Logo = ({ nav }) => {
     <Link to="/">
       {nav ? (
         <div className="home_nav-logo logo">
-          <font size="24">M</font>an
+          Man
           <span className="span">
-            <font size="24">d</font>eal
+            deal
           </span>
         </div>
       ) : (
