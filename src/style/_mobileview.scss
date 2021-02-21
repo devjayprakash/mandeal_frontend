@@ -11,6 +11,98 @@
         }
     }
   }
+
+
+  .xyz{
+      overflow-x: hidden;
+
+      
+.login {
+   background-color: rgba(180, 180, 180, 0.575);
+   height: 100vh;
+
+   &-btn{
+       font-size: 1.3rem;
+       width: 10rem;
+       height: 3rem;
+   }
+   
+
+    &_nav {
+        padding: 0px;
+
+    }
+
+    &_main {
+        padding: 2rem 4rem;
+        display:block;
+        background-color: red;
+       
+        
+
+        &-left{
+            
+
+            &--heading {
+               
+
+            }
+
+            &--des {
+                
+
+            }
+    
+        }
+
+        &-right {
+            background-color: rgba(123, 80, 242, 0.8) ;
+            margin: .1rem;
+            width: 100%;
+            margin-left: 2rem;
+            border-radius: 20px;
+            
+
+            &--form {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 5rem 3.5rem;
+                & > * {
+                    margin-bottom: .5rem;
+                }
+                
+
+                &-heading {
+                    
+
+                }
+
+                &-email {
+                    
+                    
+
+                }
+
+                &-password {
+                    
+
+                }
+
+                &-new_user {
+                    
+
+                    span {
+                        
+                    }
+
+                }
+            }
+        }
+    }
+
+}
+  }
 }
 @media only screen and (max-width: 600px) {
   .logo {
@@ -19,3 +111,4 @@
     
   }
 }
+

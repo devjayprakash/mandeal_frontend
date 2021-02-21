@@ -5,7 +5,7 @@ const Logo = ({ nav }) => {
   return (
     <Link to="/">
       {nav ? (
-        <div className="home_nav-logo logo">
+        <div className="home_nav-logo ">
           Man
           <span className="span">
             deal
